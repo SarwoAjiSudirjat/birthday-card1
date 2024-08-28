@@ -1,0 +1,241 @@
+/* Gaya untuk body dan kontainer utama */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #95bdf8;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Menyembunyikan elemen yang melampaui batas */
+}
+
+/* Gaya untuk container utama */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gaya untuk kartu */
+.card {
+    background-color: #f7fdfb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    max-width: 350px;
+    margin: auto;
+    position: absolute; /* Menempatkan kartu di atas elemen lainnya */
+    z-index: 2; /* Menempatkan kartu di atas elemen lainnya */
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Tampilkan kartu setelah kado terbuka */
+.card.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Gaya untuk gambar kartu */
+.card-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+
+.card-button:hover {
+    background-color: #45a049;
+}
+
+/* Gaya dan animasi balon */
+.balloon-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    animation: floatBalloon 10s linear infinite;
+}
+
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+/* Gaya dan animasi kembang api */
+.fireworks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.firework {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(236, 57, 41, 0.8) 20%, transparent 50%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fireworks 1.5s ease-in-out infinite;
+}
+
+.firework:nth-child(1) {
+    top: 10%;
+    left: 30%;
+    animation-duration: 1.5s;
+}
+
+.firework:nth-child(2) {
+    top: 30%;
+    left: 60%;
+    animation-duration: 2s;
+}
+
+.firework:nth-child(3) {
+    top: 50%;
+    left: 80%;
+    animation-duration: 2.5s;
+}
+
+@keyframes fireworks {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Gaya untuk kado */
+.gift-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #f5a623;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow: hidden;
+    z-index: 3; /* Pastikan kado muncul di atas elemen lain */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Tambahkan cursor pointer untuk interaksi */
+}
+
+.gift-lid {
+    width: 150%;
+    height: 150%;
+    background-color: #f4610c;
+    border-bottom: 5px solid #d48c00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: bottom;
+    transition: transform 1s ease-in-out;
+}
+
+.gift-body {
+    width: 100%;
+    height: 65%;
+    background-color: #5194f1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Animasi membuka kado */
+.gift-box.open .gift-lid {
+    transform: rotateX(120deg);
+}
+
+.gift-box.open {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Gaya dan animasi kucing */
+.cat-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* Pastikan kucing berada di belakang kartu ucapan */
+}
+
+.cat {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    animation: jump 2s ease-in-out infinite, moveCat 5s linear infinite;
+}
+
+@keyframes jump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes moveCat {
+    0% {
+        transform: translateX(-100px);
+    }
+    50% {
+        transform: translateX(calc(100vw - 100px));
+    }
+    100% {
+        transform: translateX(-100px);
+    }
+}
